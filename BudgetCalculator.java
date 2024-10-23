@@ -13,4 +13,20 @@ public class BudgetCalculator {
         }
         return total;
     }
+
+    // calculate remaining budget ( total budget - expenses)
+    public static double remainingBudget(double totalBudget, List<Expense> expenses){
+        double totalExpenses = totalExpenses(expenses);
+        double remainingBudget = totalBudget - totalExpenses;
+        return remainingBudget;
+    }
+
+    // calculate days left in month
+    public static int daysLeft(){
+        LocalDate today = LocalDate.now();
+        YearMonth yearMonth = YearMonth.of(today.getYear(), today.getMonth());
+        int lastDay = yearMonth.lengthOfMonth();
+        int daysLeft = lastDay - today.getDayOfMonth();
+        return daysLeft;
+    }
 }
