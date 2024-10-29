@@ -4,12 +4,12 @@ import java.util.List;
 
 public class BudgetCalculator {
 
-    // sum up all of the expenses
+    // sum up all the expenses
     public static double totalExpenses(List<Expense> expenses){
         double total = 0.0;
-        for(int i = 0; i < expenses.size(); i++){
-            Expense expense = expenses.get(i);
-            totalExpenses += expense.getAmount();
+        //loop through all expense objects in list "expenses"
+        for (Expense expense : expenses) {
+            total += expense.getAmount();
         }
         return total;
     }
@@ -17,8 +17,7 @@ public class BudgetCalculator {
     // calculate remaining budget ( total budget - expenses)
     public static double remainingBudget(double totalBudget, List<Expense> expenses){
         double totalExpenses = totalExpenses(expenses);
-        double remainingBudget = totalBudget - totalExpenses;
-        return remainingBudget;
+        return totalBudget - totalExpenses;
     }
 
     // calculate days left in month
@@ -26,14 +25,16 @@ public class BudgetCalculator {
         LocalDate today = LocalDate.now();
         YearMonth yearMonth = YearMonth.of(today.getYear(), today.getMonth());
         int lastDay = yearMonth.lengthOfMonth();
-        int daysLeft = lastDay - today.getDayOfMonth();
-        return daysLeft;
+        return lastDay - today.getDayOfMonth();
     }
 
     //calculate daily spending limit (remaining budget / days left in month)
-    public static double dailyLimit(double remainingbudget){
+    public static double dailyLimit(double remainingBudget){
         int daysLeft = daysLeft();
-        double dailyLimit = remainingbudget / daysLeft;
-        return dailyLimit;
+        if(daysLeft > 0){
+            return remainingBudget / daysLeft;
+        } else{
+            return 0;
+        }
     }
 }

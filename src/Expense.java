@@ -1,10 +1,10 @@
 import java.time.LocalDate;
 
 public class Expense {
-    private double amount;
-    private String category;
-    private LocalDate date;
-    private String description;
+    private final double amount;
+    private final String category;
+    private final LocalDate date;
+    private final String description;
 
     //constructor
     public Expense (double amount, String category, LocalDate date, String description) {
@@ -15,7 +15,6 @@ public class Expense {
     }
 
     //getters
-
     public double getAmount(){
         return amount;
     }
