@@ -29,4 +29,11 @@ public class BudgetCalculator {
         int daysLeft = lastDay - today.getDayOfMonth();
         return daysLeft;
     }
+
+    //calculate daily spending limit (remaining budget / days left in month)
+    public static double dailyLimit(double remainingbudget){
+        int daysLeft = daysLeft();
+        double dailyLimit = remainingbudget / daysLeft;
+        return dailyLimit;
+    }
 }
