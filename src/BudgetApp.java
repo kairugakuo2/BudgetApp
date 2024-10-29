@@ -22,4 +22,9 @@ public class BudgetApp{
         System.out.println("Remaining expenses: $" + remainingBudget);
         System.out.println("Daily limit: $" + dailyLimit);
     }
+
+    public static void main(String[] args) throws IOException {
+        logExpense(50.0, "Groceries", "Steaks for dinner!")
+        displayBudgetSummary(1000.00);
+    }
 }
